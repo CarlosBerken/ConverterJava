@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor de Medidas</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .select-container {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .select-container select {
+            margin-right: 5px;
+            margin-top: 5px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        input, select, button {
+            margin: 5px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result-container {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h1>Conversor de Medidas</h1>
+<form action="/converter" method="post">
+    <input type="number" step="any" name="value" required>
+    <div class="select-container">
+        <select name="fromUnit" required>
+            <option value="km">Quilômetros</option>
+            <option value="m">Metros</option>
+            <option value="cm">Centímetros</option>
+            <option value="in">Polegadas</option>
+            <option value="ft">Pés</option>
+        </select>
+        <select name="toUnit" required>
+            <option value="km">Quilômetros</option>
+            <option value="m">Metros</option>
+            <option value="cm">Centímetros</option>
+            <option value="in">Polegadas</option>
+            <option value="ft">Pés</option>
+        </select>
+    </div>
+    <button type="submit">Converter</button>
+</form>
+<div class="result-container" th:if="${result != null}">
+    <p th:text="'Resultado: ' + ${result}"></p>
+</div>
+</body>
+</html>
